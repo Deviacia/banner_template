@@ -1,4 +1,5 @@
-- const width = 1000;
+//- Banner size
+- const width = 900;
 - const height = 250;
 
 html(lang="en")
@@ -8,16 +9,24 @@ html(lang="en")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, width=device-width")
         meta(name="ad.size", content= "width=" + width + ",height=" +height)
-        //- CSS
-        link(rel="stylesheet", href="./src/css/style.css")
-        //- style: include ../css/style.css
 
+        //- CSS
+        style(type='text/css').
+            .container{
+                width: #{width}px;
+                height: #{height}px;
+            }
+        link(rel="stylesheet", href="./src/css/style.css")
+        //- Library
         script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js")
+
+        //- Script
 
         //- Title
         title #{width + 'x' + height + 'px' + ' Banner'}
     body
         button.button Button
 
+        //- Animation
         script(src="./src/script/script.js")
         //- script: include ../script/script.js
