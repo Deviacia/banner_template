@@ -1,8 +1,8 @@
 //- Banner size
-- const width = 900;
-- const height = 250;
-
-html(lang="en")
+- const width = 970;
+- const height = 90;
+doctype html
+html(xmlns="http://www.w3.org/1999/xhtml")
     head
         //- Meta tags 
         meta(charset="UTF-8")
@@ -10,23 +10,54 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, width=device-width")
         meta(name="ad.size", content= "width=" + width + ",height=" +height)
 
+        //- Title
+        title #{width + 'x' + height + 'px' + ' Banner'}
+
+        //- Library
+        script(src="https://s0.2mdn.net/ads/studio/cached_libs/gsap_3.5.1_min.js")
+
+        //- Script
+        script.
+            var clickTag = "http://www.google.com";
         //- CSS
         style(type='text/css').
-            .container{
+            .main-container{
+                cursor: pointer;
+                overflow: hidden;
+                position: relative;
+
+                background-color: #ffffff;
+
                 width: #{width}px;
                 height: #{height}px;
             }
-        link(rel="stylesheet", href="./src/css/style.css")
-        //- Library
-        script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js")
+        //- Link
+        link(rel="stylesheet", href="./css/style.css")
+        //- Delete link before production
+        //- script: include ../css/style.css
+        
+        link(rel="preconnect", href="https://fonts.googleapis.com")
+        link(rel="preconnect", href="https://fonts.gstatic.com")
+        link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap")
+    
+    body.reset
+        a(href="javascript:window.open(window.clickTag)") 
+            .main-container#banner
+                .img.logo: img(src="logo.png")
+                .img.cta: img(src="cta.png")
+                .img.people: img(src="people.png")
 
-        //- Script
+                button.btn(onclick="clickTag();") Jetzt teilnehmen
 
-        //- Title
-        title #{width + 'x' + height + 'px' + ' Banner'}
-    body
-        button.button Button
+                .img.t1: img(src="t1.png")
+                .img.t2: img(src="t2.png")
+                .img.cards: img(src="cards.png")
+                .img.box
 
         //- Animation
+        script.
+            var bannerWidth = document.querySelector("#banner").offsetWidth;
+            var bannerHeight = document.querySelector("#banner").offsetHeight;
         script(src="./src/script/script.js")
+        //- Delete script before production
         //- script: include ../script/script.js
